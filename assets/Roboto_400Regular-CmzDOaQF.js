@@ -1,0 +1,1 @@
+var e=`/cnc-controller/assets/Roboto_400Regular-FqysxNcR.ttf`;export{e as default};

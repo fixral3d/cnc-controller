@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online-CNC-Anleitung: Entwurf, V-Carving, 3D-Fräsen und Platinen | Router Studio</title>
+  <meta name="description" content="Anleitung für Router Studio: Formen und Text im Browser entwerfen, V-Carving und Inlays fräsen, STL-Modelle und Fotos in 3D fräsen, DXF/SVG schneiden, Platinen aus Gerber fräsen und an Ihre GRBL-Maschine senden. Schritt für Schritt, mit FAQ." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1e2328" />
+  <link rel="canonical" href="https://fixral3d.github.io/cnc-controller/de/guide.html" />
+  <link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/guide.html" />
+  <link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/guide.html" />
+  <link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Router Studio" />
+  <meta property="og:title" content="Online-CNC-Anleitung: Entwurf, V-Carving, 3D-Fräsen und Platinen" />
+  <meta property="og:description" content="Formen und Text entwerfen, V-Carving und Inlays, 3D-Fräsen, DXF/SVG schneiden, Platinen aus Gerber und Fräsen mit GRBL aus dem Browser — Schritt für Schritt." />
+  <meta property="og:url" content="https://fixral3d.github.io/cnc-controller/de/guide.html" />
+  <meta property="og:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Router Studio — online CNC CAM &amp; GRBL control" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie fräse ich Text oder ein Logo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fügen Sie über die Werkzeugleiste links Text hinzu oder öffnen Sie Ihr SVG/DXF-Logo. Wählen Sie im Tab „Fräsen“ V-Carving mit einem V-Fräser für scharfe Ecken, „Tasche“ für flache Schrift oder „Außen“, um die Buchstaben auszuschneiden."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie mache ich ein V-Carving-Inlay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Geben Sie der Form V-Carving und klicken Sie auf „V-Inlay-Einleger hinzufügen“. Es entsteht ein gespiegelter Einleger. Fräsen Sie die Tasche in ein Brett und den Einleger in ein zweites Brett anderer Farbe, verleimen und bündig schleifen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mit welchen Maschinen funktioniert es?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mit Maschinen unter GRBL 1.1: Arduino Uno + CNC Shield, 3018-Desktopfräsen und ähnliche. Die Verbindung läuft über Web Serial im Browser; Chrome oder Edge ist nötig."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie fräse ich eine Platine aus Gerber-Dateien?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Öffnen Sie den Gerber-Ordner im Menü „Datei“. Kupfer-, Kontur- und Bohrebenen werden erkannt. Fräser wählen und „Fräsen“ klicken; es entstehen getrennte Jobs für Isolation, Bohren und Kontur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Geht es ohne Z-Taster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Fräser auf ein Blatt Papier absenken und „Z-Nullpunkt hier setzen“ klicken. Mit Taster sind auch automatisches Antasten und eine Höhenkarte möglich."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist es kostenlos, muss man etwas installieren?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es ist kostenlos, läuft komplett im Browser, und Ihre Dateien verlassen Ihren Rechner nicht."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>:root{--body:#1e2328;--panel:#262c32;--ink:#e7eaed;--ink-2:#a3acb5;--amber:#ffb020;--go:#2fb36d;--line:#353d45;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}*{box-sizing:border-box}body{background:var(--body);color:var(--ink);margin:0;font:400 17px/1.65 Barlow,system-ui,sans-serif}header{background:linear-gradient(#2f363d,#252b31);border-bottom:1px solid #14181b;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px;display:flex}header a.brand{color:#dfe4e8;font:700 19px Barlow Semi Condensed,sans-serif;text-decoration:none}.langs{gap:4px;margin-left:auto;margin-right:12px;display:flex}.langs a{color:var(--ink-2);border-radius:4px;padding:4px 8px;font-size:14px;font-weight:600;text-decoration:none}.langs a[aria-current]{color:#1d1608;background:var(--amber)}.cta{color:#fff;background:linear-gradient(180deg, #3ccb7f, var(--go));border:1px solid #1f7a4b;border-radius:6px;padding:9px 20px;font-weight:600;text-decoration:none;display:inline-block;box-shadow:0 0 16px #2fb36d4d}main{max-width:760px;margin:0 auto;padding:48px 20px 80px}h1{-webkit-hyphens:auto;hyphens:auto;margin:0 0 18px;font:700 clamp(30px,5vw,44px)/1.12 Barlow Semi Condensed,sans-serif}h2{margin:46px 0 12px;font:700 25px/1.25 Barlow Semi Condensed,sans-serif}h3{margin:26px 0 6px;font:600 19px/1.3 Barlow Semi Condensed,sans-serif}p,li{color:#d3d9de;-webkit-hyphens:auto;hyphens:auto}.lead{color:var(--ink-2);font-size:19px}a{color:var(--amber)}ol li,ul li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15.5px}th,td{text-align:left;border-bottom:1px solid var(--line);vertical-align:top;padding:9px 10px}th{color:var(--ink-2);font-weight:600}code{color:var(--amber);background:#101417;border-radius:4px;padding:1px 6px;font-size:.92em}footer{border-top:1px solid var(--line);text-align:center;color:var(--ink-2);padding:24px 20px;font-size:14px}</style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">Router Studio</a>
+    <nav class="langs"><a href="../rehber.html">TR</a><a href="../en/guide.html">EN</a><a href="guide.html" aria-current="page">DE</a></nav>
+    <a class="cta" href="./">App öffnen</a>
+  </header>
+  <main>
+    <article>
+      <h1>Online-CNC-Anleitung: Entwurf, V-Carving, 3D-Fräsen und Platinen</h1>
+      <p class="lead">Router Studio ist eine kostenlose CNC-Software im Browser: Sie entwirft Formen und Text, fräst V-Carvings und Inlays, fräst 3D-Modelle und Fotos, schneidet DXF/SVG-Zeichnungen, fräst Platinen aus Gerber-Dateien, simuliert den Job in 3D und sendet ihn an Ihre GRBL-Maschine. Ohne Installation; Ihre Dateien verlassen Ihren Rechner nicht.</p>
+
+      <h2>Die Oberfläche im Überblick</h2>
+      <ul>
+        <li><strong>Menüs oben.</strong> <em>Datei</em>: neues Projekt, öffnen, speichern, Datei hinzufügen, Gerber-Ordner. <em>Ansicht</em>: Ebenenbereich, Lineale, Raster, Eilgänge, Zoom. <em>Hilfe</em>: Anleitung, Assistent und Versionsinfo (Über).</li>
+        <li><strong>Werkzeugleiste links.</strong> Formen, Text, Freihand, Anordnen, Apps und Dateiimport.</li>
+        <li><strong>Zeichenfläche.</strong> Millimeterlineale oben und links. Entwurf zum Verschieben ziehen; Rechtsklick zum Duplizieren, Ausrichten oder Löschen. Zwischen Entwurf, Vorschau und 3D wechseln.</li>
+        <li><strong>Rechter Bereich.</strong> Die Leiste oben enthält Material, Nullpunkt und Fräser. Der gewählte Entwurf hat zwei Tabs: <em>Fräsen</em> (Frästyp, Fräser, Tiefe) und <em>Form und Position</em> (Größe, Winkel, Text, Lage).</li>
+        <li><strong>Tab „Maschine“.</strong> Drei Schritte: 1 Verbinden, 2 Nullpunkt setzen, 3 Fräsen.</li>
+      </ul>
+
+      <h2>Unterstützte Dateien</h2>
+      <table>
+        <thead><tr><th>Datei</th><th>Wofür</th></tr></thead>
+        <tbody>
+          <tr><td>Eingebaute Formen und Text</td><td>Rechteck, Kreis, Polygon, Stern, Herz, Linie; Text in 6 Schriften</td></tr>
+          <tr><td>DXF, SVG</td><td>Auf der Linie, außen, innen, Tasche und V-Carving</td></tr>
+          <tr><td>STL, OBJ, 3MF</td><td>3D-Fräsen: Schruppen und Schlichten mit Kugelfräser</td></tr>
+          <tr><td>PNG, JPG, WEBP, BMP</td><td>Relief aus Foto oder Logo (hell = hoch)</td></tr>
+          <tr><td>Gerber (<code>.gtl .gbl .gko .gm1 .gbr</code>)</td><td>Isolationsfräsen, Platinenkontur</td></tr>
+          <tr><td>Excellon (<code>.drl .xln</code>)</td><td>Bohren; größere Löcher werden ausgefräst</td></tr>
+          <tr><td>Ordner oder <code>.zip</code></td><td>KiCad-/EasyEDA-Gerber-Ausgabe in einem Schritt</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Frästypen</h2>
+      <table>
+        <thead><tr><th>Frästyp</th><th>Wirkung</th><th>Fräser</th></tr></thead>
+        <tbody>
+          <tr><td>Auf der Linie</td><td>Die Fräsermitte folgt der Linie; für Gravuren und Linienbilder wie Labyrinthe.</td><td>V-Fräser oder dünner Schaftfräser</td></tr>
+          <tr><td>Außen</td><td>Schneidet ein Teil am Rand aus, Maß bleibt erhalten. Haltestege halten es fest.</td><td>Schaftfräser</td></tr>
+          <tr><td>Innen</td><td>Schneidet ein Loch von innen, Lochmaß bleibt erhalten.</td><td>Schaftfräser</td></tr>
+          <tr><td>Tasche</td><td>Räumt das Innere auf flachen Boden aus. Versatz- oder Rasterfüllung, optionale Bodentextur.</td><td>Schaftfräser, Kugelfräser für Textur</td></tr>
+          <tr><td>V-Carving</td><td>Tiefe folgt der Breite, scharfe Ecken in Schrift. Breite Bereiche erhalten flachen Boden.</td><td>V-Fräser (+ optional Schaftfräser)</td></tr>
+          <tr><td>3D-Fräsen</td><td>Fräst eine Modelloberfläche mit Schrupp- und Schlichtgang.</td><td>Schaftfräser + Kugelfräser</td></tr>
+          <tr><td>Isolation, Bohren, Kontur</td><td>Platinen aus Gerber/Excellon.</td><td>V-Fräser, Bohrer, 1-mm-Fräser</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Formen und Text entwerfen</h2>
+      <ol>
+        <li><strong>Hinzufügen.</strong> Form oder Text in der Werkzeugleiste wählen. Der Entwurf landet auf freiem Platz und der Tab <em>Form und Position</em> öffnet sich.</li>
+        <li><strong>Größe.</strong> Breite, Höhe und Winkel eingeben; „Seitenverhältnis beibehalten“ skaliert gleichmäßig. Eckenradius, Eckenzahl, Schrift und Buchstabenhöhe einstellen.</li>
+        <li><strong>Bearbeiten.</strong> „Erweiterte Vektorbearbeitung“ bietet Versatzkopie, Vereinfachen, Punktbearbeitung sowie Vereinigen, Abziehen und Schnittmenge mit einer zweiten Form. Mit Freihand zeichnen Sie von Hand.</li>
+        <li><strong>Anordnen.</strong> Ausrichten-Schaltflächen, „Auf Material zentrieren“, Rechtsklickmenü und „Anordnen“ in der Werkzeugleiste. Strg+Z / Strg+Y für Rückgängig und Wiederholen.</li>
+      </ol>
+      <p>Überlappende Buchstabenteile werden zu einer Kontur vereinigt, so folgt jeder Schnitt nur der sichtbaren Kante. Passt der Fräser nicht in einen dünnen Teil, nennt die App den Anteil, der ungefräst bleibt.</p>
+
+      <h2>V-Carving und Inlays: Schritt für Schritt</h2>
+      <ol>
+        <li><strong>Form wählen</strong> und im Tab „Fräsen“ den Frästyp <em>V-Carving</em> setzen. Ein passender V-Fräser wird zugewiesen.</li>
+        <li><strong>Tiefe eingeben.</strong> Das ist die maximale Tiefe; breitere Bereiche erhalten flachen Boden. Ein „Bodenfräser“ räumt diese schnell aus.</li>
+        <li><strong>Für ein Inlay</strong> „V-Inlay-Einleger hinzufügen“ klicken. Es entsteht ein gespiegelter Einleger; die „Starttiefe“ lässt einen Leimspalt.</li>
+        <li><strong>Getrennt fräsen.</strong> Tasche in ein Brett, Einleger in ein zweites Brett anderer Farbe fräsen; das jeweils andere ausblenden. Einleger verleimen und bündig schleifen. Zuerst an Restholz testen.</li>
+      </ol>
+
+      <h2>3D-Fräsen: Schritt für Schritt</h2>
+      <ol>
+        <li><strong>Modell hinzufügen.</strong> Über Datei → Datei hinzufügen STL, OBJ, 3MF oder ein Foto wählen. Das Modell erscheint in 3D; mit der Maus drehen.</li>
+        <li><strong>Größe und Ausrichtung.</strong> Breite, Tiefe und die oben liegende Seite wählen. Für eine Form „Invertieren“ ankreuzen.</li>
+        <li><strong>Fräser wählen.</strong> Schaftfräser (z. B. 3,175 mm) zum Schruppen, Kugelfräser zum Schlichten. Raster „X + Y“ ergibt glattere Flächen.</li>
+        <li><strong>Simulieren und fräsen.</strong> Oberfläche in 3D prüfen. Optional das Teil an der Kontur ausschneiden.</li>
+      </ol>
+
+      <h2>Platine aus Gerber: Schritt für Schritt</h2>
+      <ol>
+        <li><strong>Ordner öffnen.</strong> Datei → Gerber-Ordner öffnen. Kupfer-, Kontur- und Bohrebenen werden erkannt; Maske und Bestückungsdruck übersprungen.</li>
+        <li><strong>Material eingeben.</strong> Unter „Material“ in der Leiste die Maße der Platine eintragen und das Layout platzieren.</li>
+        <li><strong>Fräser wählen.</strong> V-Fräser für Isolation (z. B. 30° · 0,2 mm), 0,8-mm-Fräser für Löcher, 1-mm-Fräser für die Kontur. Die Nutbreite des V-Fräsers wird aus der Tiefe berechnet.</li>
+        <li><strong>Simulieren und fräsen.</strong> Jobs laufen je Fräser: Isolation, Bohren, Kontur. Nach jedem Job parkt die Maschine und führt durch den Fräserwechsel.</li>
+      </ol>
+
+      <h2>Anordnen, Füllen und Apps</h2>
+      <ul>
+        <li><strong>Anordnen.</strong> Ordnet alle Teile auf dem Material an, größte zuerst; was nicht passt, liegt rechts daneben.</li>
+        <li><strong>Material damit füllen.</strong> Füllt im Rechtsklickmenü das Material mit Kopien des gewählten Teils um die anderen Teile herum.</li>
+        <li><strong>Apps.</strong> Kistengenerator (5 Platten mit Fingerzinken), Zahnrad, Labyrinth, Wabenmuster, Lochraster, Kreisanordnung und Dog-Bone-Ecken. Dog-Bones geben Innenecken Freistiche im Fräserradius, damit Verbindungen ganz passen.</li>
+      </ul>
+
+      <h2>Fräsen: drei Schritte an der Maschine</h2>
+      <ol>
+        <li><strong>Verbinden.</strong> Im Tab „Maschine“ auf „Verbinden“ klicken und den Port des GRBL-Boards wählen. Arbeitsbereich und Parkposition im Maschinenprofil einstellen.</li>
+        <li><strong>Nullpunkt setzen.</strong> Fräser zum Startpunkt fahren, XY-Nullpunkt und mit der Papiermethode Z-Nullpunkt setzen. „Rahmen abfahren“ prüft die Lage ohne zu fräsen.</li>
+        <li><strong>Fräsen.</strong> Jobs der Reihe nach starten; zuerst erscheint eine Checkliste. Vorschub und Drehzahl lassen sich beim Fräsen in 10-%-Schritten ändern. Bricht ein Fräser oder stoppt der Job, „Ab Zeile fortsetzen“ verwenden.</li>
+      </ol>
+      <p>Für Material, das länger als die Maschine ist, im Bereich „Nullpunkt“ das <em>Kacheln</em> einschalten: Der Job wird entlang Y in Abschnitte geteilt, nach jedem Abschnitt verschieben Sie das Material um die angegebene Länge.</p>
+
+      <h2>Maschine verbinden</h2>
+      <p>Router Studio arbeitet mit Maschinen unter GRBL 1.1: Arduino Uno + CNC Shield V3, 3018-Desktopfräsen und ähnliche. Die Verbindung läuft über Web Serial im Browser, also Chrome oder Edge verwenden. Den G-Code können Sie auch als <code>.nc</code>-Datei laden und mit Candle oder UGS senden.</p>
+
+      <h2>Häufige Fragen</h2>
+      <h3>Wie fräse ich Text oder ein Logo?</h3>
+      <p>Text über die Werkzeugleiste hinzufügen oder Ihr SVG/DXF-Logo öffnen. V-Carving für scharfe Ecken, „Tasche“ für flache Schrift oder „Außen“, um die Buchstaben auszuschneiden.</p>
+      <h3>Geht es ohne Z-Taster?</h3>
+      <p>Ja. Fräser auf ein Blatt Papier absenken und „Z-Nullpunkt hier setzen“ klicken. Mit Taster sind auch automatisches Antasten und eine Höhenkarte (Auto-Level) möglich.</p>
+      <h3>Kann ich DWG-Dateien öffnen?</h3>
+      <p>DWG ist ein geschlossenes Format. Speichern Sie die Zeichnung in AutoCAD, LibreCAD oder ODA File Converter als DXF und importieren Sie diese.</p>
+      <h3>Werden meine Dateien hochgeladen?</h3>
+      <p>Nein. Alles läuft in Ihrem Browser; Ihre Dateien verlassen Ihren Rechner nicht.</p>
+      <h3>Was ist der Unterschied zu Easel?</h3>
+      <p>Router Studio ist kostenlos und ohne Fräslimit; V-Carving, V-Inlays, 3D-Fräsen, Texturtaschen, Anordnen und Kacheln stehen allen offen. Zudem liest es Gerber- und Excellon-Dateien direkt, fräst Platinen-Isolationsbahnen und bietet Höhenkarten (Auto-Level).</p>
+
+      <p style="margin-top:40px"><a class="cta" href="./">Router Studio im Browser öffnen</a></p>
+    </article>
+  </main>
+  <footer>Router Studio — CNC-Entwurf, CAM und GRBL-Steuerung im Browser. · v2.0.0 · <a href="mailto:erdem.erciyas@gmail.com">erdem.erciyas@gmail.com</a></footer>
+</body>
+</html>

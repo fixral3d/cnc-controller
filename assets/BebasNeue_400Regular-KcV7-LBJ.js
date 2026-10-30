@@ -1,0 +1,1 @@
+var e=`/cnc-controller/assets/BebasNeue_400Regular-D2CONTwO.ttf`;export{e as default};

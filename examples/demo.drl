@@ -1,0 +1,23 @@
+M48
+; DRILL file {KiCad 8} date Wed Oct 28 2026
+; FORMAT={-:-/ absolute / metric / decimal}
+FMAT,2
+METRIC
+T1C0.800
+T2C1.000
+T3C3.200
+%
+G90
+G05
+T1
+X5.0Y5.0
+X7.54Y5.0
+X10.08Y5.0
+T2
+X25.0Y5.0
+X25.0Y15.0
+T3
+X2.5Y17.5
+X27.5Y17.5
+T0
+M30

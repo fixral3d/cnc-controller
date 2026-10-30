@@ -1,0 +1,1 @@
+var e=`/cnc-controller/assets/Cinzel_400Regular-BGsxYBEC.ttf`;export{e as default};

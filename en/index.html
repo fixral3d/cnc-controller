@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Router Studio — Online CNC Design, V-Carving & GRBL Control | G-code from STL, DXF, SVG, Gerber</title>
+  <meta name="description" content="Free CNC software in your browser: design shapes and text, V-carve and make V-inlays, carve STL/OBJ/3MF models and photos in 3D, cut and pocket DXF/SVG and mill PCBs from Gerber. Simulate the G-code in 3D and stream it straight to your GRBL machine. No carve limit, no install." />
+  <meta name="keywords" content="online cnc, cnc software, cnc design, v carve, v-carving software, v carve inlay, cnc sign making, text engraving, 3d cnc carving, stl to gcode, relief carving, image to gcode, pocket milling, nesting, box maker, gear generator, pcb milling, pcb isolation routing, gerber to gcode, dxf to gcode, svg to gcode, grbl controller, grbl sender, arduino cnc shield, 3018 cnc, easel alternative, free easel alternative, web serial cnc" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Erdem Erciyas" />
+  <meta name="theme-color" content="#1e2328" />
+  <link rel="canonical" href="https://fixral3d.github.io/cnc-controller/en/" />
+  <link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/" />
+  <link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/" />
+  <link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/cnc-controller/" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="../manifest.webmanifest" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Router Studio" />
+  <meta property="og:title" content="Router Studio — Online CNC Design, V-Carving &amp; GRBL Control" />
+  <meta property="og:description" content="Design shapes and text, V-carve and make inlays, generate G-code from 3D models, DXF/SVG and Gerber, simulate in 3D and stream to your GRBL machine from the browser. Free, no carve limit." />
+  <meta property="og:url" content="https://fixral3d.github.io/cnc-controller/en/" />
+  <meta property="og:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Router Studio — online CNC tasarım, CAM ve GRBL kontrol" />
+  <meta name="twitter:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Router Studio — Online CNC Design, V-Carving &amp; GRBL Control" />
+  <meta name="twitter:description" content="Design shapes and text, V-carve and make inlays, generate G-code from 3D models, DXF/SVG and Gerber, simulate in 3D and stream to your GRBL machine from the browser. Free, no carve limit." />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Router Studio","url":"https://fixral3d.github.io/cnc-controller/en/","applicationCategory":"DesignApplication","operatingSystem":"Web (Chrome, Edge)","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Erdem Erciyas"},"softwareVersion":"2.0.0","image":"https://fixral3d.github.io/cnc-controller/og-image.png","isAccessibleForFree":true,"description":"Free CNC software in your browser: design shapes and text, V-carve and make V-inlays, carve STL/OBJ/3MF models and photos in 3D, cut and pocket DXF/SVG and mill PCBs from Gerber. Simulate the G-code in 3D and stream it straight to your GRBL machine. No carve limit, no install.","featureList":["Shapes, text in 6 fonts and freehand drawing; point editing, offset, union / subtract / intersect","V-carving with flat-floor clearing and V-inlay plugs","Pockets (offset and angled raster), textured floors, outside / inside cuts with tabs","3D carving from STL, OBJ, 3MF and photos with roughing and ball-nose finishing","PCB isolation, drilling and outline from Gerber RS-274X and Excellon","Automatic nesting, fill the stock and tiling","Apps: box maker, gear, maze, honeycomb, hole grid, radial array, dog-bones","3D machine simulation with material removal preview","GRBL 1.1 over Web Serial: jogging, Z probe, auto-level, feed override, resume from line","Machine profiles, ramped plunges and guided Z zeroing on bit changes"]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/cnc-controller/assets/main-CLt387B6.js"></script>
+  <link rel="modulepreload" crossorigin href="/cnc-controller/assets/rolldown-runtime-WkwZ5CU-.js">
+  <link rel="stylesheet" crossorigin href="/cnc-controller/assets/main-C7V96ng8.css">
+</head>
+<body>
+  <noscript>
+    <h1>Router Studio — online CNC design, CAM and GRBL control software</h1>
+    <p>Router Studio is free CNC software that runs in your browser. It designs shapes and text, V-carves and makes inlays, and generates G-code for 3D carving from models (STL, OBJ, 3MF) and photos, cutting and pockets from DXF/SVG drawings and PCB milling from Gerber files; it simulates the job in 3D and streams it to your GRBL machine.</p>
+    <p>Enable JavaScript to use it. Connecting a machine requires Chrome or Edge. <a href="guide.html">User guide</a></p>
+  </noscript>
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect x="9" y="2" width="14" height="13" rx="2" fill="currentColor" opacity=".9"/><path d="M12 15h8l-1.5 5h-5z" fill="currentColor" opacity=".7"/><path d="M15 20h2v6l-1 3-1-3z" fill="var(--amber)"/><path d="M3 30h26" stroke="currentColor" stroke-width="2" opacity=".5"/></svg>
+      <h1 class="brand-name">Router Studio</h1>
+    </div>
+    <input id="projectName" class="project-name" value="Yeni proje" aria-label="Proje adı" />
+    <div class="top-actions">
+      <div class="menu">
+        <button type="button" class="btn ghost menu-btn" data-menu="fileMenu" aria-haspopup="menu" aria-expanded="false">Dosya <i class="caret"></i></button>
+        <div id="fileMenu" class="menu-pop" role="menu" hidden>
+          <button type="button" role="menuitem" id="btnNew">Yeni proje</button>
+          <button type="button" role="menuitem" id="btnOpen">Proje aç…</button>
+          <button type="button" role="menuitem" id="btnSave">Projeyi kaydet</button>
+          <hr />
+          <button type="button" role="menuitem" id="btnImport">Dosya ekle… <small>DXF, SVG, STL, görsel</small></button>
+          <button type="button" role="menuitem" id="btnFolder">Gerber klasörü aç… <small>PCB</small></button>
+        </div>
+      </div>
+      <div class="menu">
+        <button type="button" class="btn ghost menu-btn" data-menu="viewMenu" aria-haspopup="menu" aria-expanded="false">Görünüm <i class="caret"></i></button>
+        <div id="viewMenu" class="menu-pop" role="menu" hidden>
+          <button type="button" role="menuitemcheckbox" data-view="layers" aria-checked="true">Katman paneli</button>
+          <button type="button" role="menuitemcheckbox" data-view="rulers" aria-checked="true">Cetveller</button>
+          <button type="button" role="menuitemcheckbox" data-view="grid" aria-checked="true">Izgara</button>
+          <button type="button" role="menuitemcheckbox" data-view="rapids" aria-checked="true">Boşta hareketler (önizleme)</button>
+          <hr />
+          <button type="button" role="menuitemradio" data-view-mode="design">Tasarım</button>
+          <button type="button" role="menuitemradio" data-view-mode="preview">Önizleme</button>
+          <button type="button" role="menuitemradio" data-view-mode="3d">3D</button>
+          <hr />
+          <button type="button" role="menuitem" data-view-zoom="in">Yakınlaştır <small>Ctrl +</small></button>
+          <button type="button" role="menuitem" data-view-zoom="out">Uzaklaştır <small>Ctrl −</small></button>
+          <button type="button" role="menuitem" data-view-zoom="fit">Malzemeyi sığdır <small>Ctrl 0</small></button>
+        </div>
+      </div>
+      <div class="menu">
+        <button type="button" class="btn ghost menu-btn" data-menu="helpMenu" aria-haspopup="menu" aria-expanded="false">Yardım <i class="caret"></i></button>
+        <div id="helpMenu" class="menu-pop" role="menu" hidden>
+          <a role="menuitem" id="guideLink" href="guide.html">Kullanım rehberi</a>
+          <button type="button" role="menuitem" id="btnAssistant" class="asst-toggle" aria-pressed="true">Asistanı göster</button>
+          <hr />
+          <button type="button" role="menuitem" id="btnAbout">Hakkında <small class="app-version"></small></button>
+        </div>
+      </div>
+      <button id="btnShare" class="btn ghost" title="Paylaş" aria-label="Paylaş"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><circle cx="18" cy="5" r="2.6" fill="currentColor"/><circle cx="6" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="19" r="2.6" fill="currentColor"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3" stroke="currentColor" stroke-width="1.8"/></svg>Paylaş</button>
+    </div>
+    <div class="top-right">
+      <select id="langSel" class="lang-sel" aria-label="Dil"></select>
+      <div class="top-dro" aria-label="Makine konumu">
+        <span>X<b id="topX">—</b></span><span>Y<b id="topY">—</b></span><span>Z<b id="topZ">—</b></span>
+      </div>
+      <span id="machinePill" class="pill off"><i class="led"></i><span id="machinePillText">Makine bağlı değil</span></span>
+      <button id="btnCarve" class="btn go">Kes</button>
+    </div>
+    <input id="fileInput" type="file" multiple hidden accept=".gbr,.ger,.gtl,.gbl,.gko,.gm1,.gml,.gts,.gbs,.gto,.gbo,.gtp,.gbp,.drl,.xln,.txt,.exc,.dxf,.svg,.zip,.cmp,.sol,.stl,.obj,.3mf,.png,.jpg,.jpeg,.webp,.bmp,.dwg" />
+    <input id="folderInput" type="file" hidden webkitdirectory multiple />
+    <input id="projectInput" type="file" hidden accept=".json,.rstudio,.pcbcarve" />
+  </header>
+
+  <main class="app" id="app">
+    <aside class="layers">
+      <div class="layers-head">
+        <h2>Katmanlar</h2>
+        <button type="button" id="btnLayersToggle" class="icon-btn" title="Katman panelini daralt / genişlet" aria-label="Katman panelini daralt / genişlet" aria-expanded="true"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg></button>
+      </div>
+      <ul id="layerList"></ul>
+      <div id="emptyLayers" class="empty">
+        <p>Henüz tasarım yok. Araç çubuğundan şekil veya metin ekleyin ya da dosyaları buraya sürükleyin.</p>
+        <p class="muted">PCB için: Dosya → Gerber klasörü aç (veya .zip).</p>
+      </div>
+    </aside>
+
+    <section class="stage" id="stage">
+      <canvas id="canvas"></canvas>
+      <div id="view3d" class="view3d" hidden></div>
+      <div id="modelView" class="view3d" hidden></div>
+      <div class="stage-bar">
+        <div class="seg" role="tablist">
+          <button data-mode="design" class="on">Tasarım</button>
+          <button data-mode="preview">Önizleme</button>
+          <button data-mode="3d">3D</button>
+        </div>
+        <div id="dviewSeg" class="seg small" hidden><button data-dview="2d">2D</button><button data-dview="3d">3D model</button></div>
+        <div id="toolsModel" class="seg small" hidden>
+          <button data-mcam="iso">İzometrik</button><button data-mcam="top">Üst</button><button data-mcam="front">Ön</button><button data-mcam="right">Sağ</button><button data-mcam="back">Arka</button><button data-mcam="left">Sol</button><button data-mcam="bottom">Alt</button>
+        </div>
+        <button id="btnFit" class="btn small ghost-dark">Sığdır</button>
+        <div class="seg small">
+          <button id="btnUndo" title="Geri al (Ctrl+Z)" aria-label="Geri al (Ctrl+Z)" disabled><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M9 14L4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button id="btnRedo" title="Yinele (Ctrl+Y)" aria-label="Yinele (Ctrl+Y)" disabled><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M15 14l5-5-5-5M20 9H10a6 6 0 0 0 0 12h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div id="tools3d" class="tools3d" hidden>
+          <div class="seg small"><button data-cam="iso">İzometrik</button><button data-cam="top">Üst</button><button data-cam="front">Ön</button></div>
+          <label class="chk dark"><input type="checkbox" id="chkPaths" checked /> Takım yolu</label>
+        </div>
+        <label class="chk dark" id="rapidToggle" hidden><input type="checkbox" id="chkRapids" checked /> Boşta hareketler</label>
+        <span class="coords" id="coords">X 0.00 · Y 0.00</span>
+      </div>
+      <div id="stats" class="stats" hidden></div>
+      <ul id="warnings" class="warnings"></ul>
+      <div id="simBar" class="sim-bar" hidden>
+        <button id="simPlay" class="sim-play" aria-label="Simülasyonu oynat">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path id="simIcon" d="M7 4l13 8-13 8z" fill="currentColor"/></svg>
+        </button>
+        <button id="simRestart" class="btn small ghost-dark" aria-label="Başa sar">Başa sar</button>
+        <input id="simSlider" type="range" min="0" max="1000" step="1" value="1000" aria-label="Simülasyon zamanı" />
+        <select id="simSpeed" aria-label="Simülasyon hızı"><option value="1">1×</option><option value="5">5×</option><option value="20" selected>20×</option><option value="100">100×</option></select>
+        <span id="simInfo" class="sim-info"></span>
+      </div>
+      <div id="toolRail" class="tool-rail" role="toolbar" aria-label="Tasarım araçları">
+        <button type="button" id="railShapes" title="Şekil ekle" aria-label="Şekil ekle"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="9" height="9" /><circle cx="16" cy="8" r="5" /></svg></button>
+        <div id="shapeMenu" class="rail-menu" hidden>
+          <button type="button" data-shape="rect"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" /></svg>Dikdörtgen</button>
+          <button type="button" data-shape="ellipse"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /></svg>Daire</button>
+          <button type="button" data-shape="polygon"><svg viewBox="0 0 24 24"><path d="M12 3l8 5v8l-8 5-8-5V8z" /></svg>Çokgen</button>
+          <button type="button" data-shape="star"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 6 6.4.6-4.9 4.2 1.5 6.2L12 16.8 6.4 20l1.5-6.2L3 9.6 9.4 9z" /></svg>Yıldız</button>
+          <button type="button" data-shape="heart"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /></svg>Kalp</button>
+          <button type="button" data-shape="line"><svg viewBox="0 0 24 24"><path d="M4 20L20 4" /></svg>Çizgi</button>
+        </div>
+        <button type="button" id="railText" title="Metin ekle" aria-label="Metin ekle"><svg viewBox="0 0 24 24"><path d="M5 6V4h14v2M12 4v16M9 20h6" /></svg></button>
+        <button type="button" id="railDraw" title="Serbest çizim" aria-label="Serbest çizim"><svg viewBox="0 0 24 24"><path d="M4 20c3-1 4-4 7-7l6-6 3 3-6 6c-3 3-6 4-10 4z" /></svg></button>
+        <button type="button" id="railNest" title="Parçaları malzemeye yerleştir" aria-label="Parçaları malzemeye yerleştir"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="10" /><rect x="13" y="3" width="8" height="6" /><rect x="13" y="11" width="8" height="10" /><rect x="3" y="15" width="8" height="6" /></svg></button>
+        <button type="button" id="railApps" title="Uygulamalar" aria-label="Uygulamalar"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><path d="M17 14v6M14 17h6" /></svg></button>
+        <button type="button" id="railImport" title="Dosya ekle" aria-label="Dosya ekle"><svg viewBox="0 0 24 24"><path d="M12 15V4M7 9l5-5 5 5M4 15v5h16v-5" /></svg></button>
+      </div>
+      <div id="emptyStage" class="empty-stage" hidden>
+        <h2>Tasarıma başlayın</h2>
+        <p>Bir şekil veya metin ekleyin ya da dosyanızı buraya sürükleyin.</p>
+        <div class="btn-row">
+          <button type="button" id="emptyShapes" class="btn">Şekil ekle</button>
+          <button type="button" id="emptyText" class="btn">Metin ekle</button>
+          <button type="button" id="emptyFile" class="btn primary">Dosya aç</button>
+        </div>
+        <p class="hint">DXF, SVG, STL, OBJ, 3MF, görsel veya Gerber (PCB) · <a href="#" id="emptyDemo" role="button">Örnek PCB yükle</a></p>
+      </div>
+      <div id="dropHint" class="drop-hint" hidden>Dosyaları bırakın</div>
+      <div id="ctxMenu" class="ctx" role="menu" hidden>
+        <button type="button" role="menuitem" data-act="duplicate">Çoğalt <kbd>Ctrl+D</kbd></button>
+        <button type="button" role="menuitem" data-act="delete">Sil <kbd>Del</kbd></button>
+        <button type="button" role="menuitem" data-act="fill">Malzemeyi bununla doldur</button>
+        <button type="button" role="menuitem" data-act="nest">Tümünü yerleştir</button>
+        <hr />
+        <button type="button" role="menuitem" data-act="mirror">Yatay çevir</button>
+        <button type="button" role="menuitem" data-act="hide">Gizle</button>
+        <hr />
+        <button type="button" role="menuitem" data-act="center">Malzemeye ortala</button>
+        <button type="button" role="menuitem" data-act="left">Sola hizala</button>
+        <button type="button" role="menuitem" data-act="right">Sağa hizala</button>
+        <button type="button" role="menuitem" data-act="top">Üste hizala</button>
+        <button type="button" role="menuitem" data-act="bottom">Alta hizala</button>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="strip">
+        <button type="button" class="strip-btn" data-pop="popMaterial"><small>Malzeme</small><b id="stripMat"></b><span id="stripMatSub"></span></button>
+        <button type="button" class="strip-btn" data-pop="popZero"><small>İş sıfırı</small><b id="stripZero"></b></button>
+        <button type="button" class="strip-btn" data-pop="popBit"><small>Uç</small><b id="stripBit"></b><span id="stripBitSub"></span></button>
+      </div>
+
+      <div class="pop" id="popMaterial" hidden>
+        <h4>Malzeme türü</h4>
+        <label>Tür
+          <select id="matPreset">
+            <option value="fr4">Bakır plaket (FR4)</option>
+            <option value="mdf">MDF</option>
+            <option value="ply">Kontrplak</option>
+            <option value="acrylic">Akrilik</option>
+          </select>
+        </label>
+        <div class="row3">
+          <label>Genişlik <span class="unit"><input id="matW" type="number" step="1" min="1" /> mm</span></label>
+          <label>Yükseklik <span class="unit"><input id="matH" type="number" step="1" min="1" /> mm</span></label>
+          <label>Kalınlık <span class="unit"><input id="matT" type="number" step="0.1" min="0.1" /> mm</span></label>
+        </div>
+      </div>
+
+      <div class="pop" id="popZero" hidden>
+        <h4>İş sıfırı (X0 Y0)</h4>
+        <label>Başlangıç noktası
+          <select id="originSel">
+            <option value="material-ll">Malzemenin sol alt köşesi</option>
+            <option value="design-ll">Tasarımın sol alt köşesi</option>
+            <option value="design-lr">Tasarımın sağ alt köşesi</option>
+            <option value="design-ul">Tasarımın sol üst köşesi</option>
+            <option value="design-ur">Tasarımın sağ üst köşesi</option>
+            <option value="design-center">Tasarımın merkezi</option>
+          </select>
+        </label>
+        <p class="hint">Kesim bu noktadan başlar. Makine sekmesinde aynı noktaya XY sıfırını ayarlayın.</p>
+        <h4>Bölmeli kesim</h4>
+        <label class="chk"><input type="checkbox" id="setTile" /> Makineden uzun malzemeyi bölgeler hâlinde kes (tiling)</label>
+        <div id="tileFields">
+          <label>Bölge uzunluğu (Y) <span class="unit"><input id="setTileLen" type="number" step="10" min="10" /> mm</span></label>
+          <p class="hint">Önü ve arkası açık makineler içindir. Her bölgeden sonra malzemeyi bu kadar kaydırırsınız; sıfır noktası aynı kalır.</p>
+        </div>
+      </div>
+
+      <div class="pop" id="popBit" hidden>
+        <h4>Uç</h4>
+        <label>Uç <select id="popBitSel"></select></label>
+        <div class="row2">
+          <label>Besleme <span class="unit"><input id="popBitFeed" data-k="feed" type="number" step="10" min="1" /> mm/dk</span></label>
+          <label>Dalma hızı <span class="unit"><input id="popBitPlunge" data-k="plunge" type="number" step="10" min="1" /> mm/dk</span></label>
+          <label title="Her katta inilen derinlik. Küçük değer uca daha az yük bindirir.">Geçiş derinliği <span class="unit"><input id="popBitDpp" data-k="dpp" type="number" step="0.05" min="0.01" /> mm</span></label>
+          <label>Devir <span class="unit"><input id="popBitRpm" data-k="rpm" type="number" step="500" min="0" /> d/dk</span></label>
+        </div>
+        <p class="hint">Değerler uç kütüphanesine kaydedilir ve bu ucu kullanan tüm işlere uygulanır.</p>
+        <div class="btn-row"><button type="button" id="btnBitLib" class="btn small">Uç kütüphanesini düzenle</button></div>
+        <h4>Takım yolu</h4>
+        <label>Cep doldurma
+          <select id="setFill">
+            <option value="offset">Ofset (dıştan içe halkalar)</option>
+            <option value="raster">Raster (paralel geçişler)</option>
+          </select>
+          <small class="field-hint" id="setFillHint"></small>
+        </label>
+        <label id="rasterAngleRow">Raster yönü
+          <select id="setRasterAngle">
+            <option value="0">0° (X boyunca)</option>
+            <option value="45">45°</option>
+            <option value="90">90° (Y boyunca)</option>
+            <option value="135">135°</option>
+          </select>
+        </label>
+        <label>Dalma
+          <select id="setRamp">
+            <option value="0">Dik</option>
+            <option value="1">Rampalı (eğimli giriş)</option>
+          </select>
+          <small class="field-hint" id="setRampHint"></small>
+        </label>
+        <label>Kesim yönü
+          <select id="setClimb">
+            <option value="0">Konvansiyonel</option>
+            <option value="1">Tırmanma (climb)</option>
+          </select>
+          <small class="field-hint" id="setClimbHint"></small>
+        </label>
+        <div class="row2">
+          <label title="Boşta hareketlerde ucun malzemenin üstünde duracağı yükseklik.">Güvenli Z <span class="unit"><input id="setSafeZ" type="number" step="0.5" min="0.5" /> mm</span></label>
+          <label title="İş bitince ucun değiştirilmesi için kalkacağı yükseklik (Z sıfırının üstünde).">Uç değişim yüksekliği <span class="unit"><input id="setToolZ" type="number" step="1" min="1" /> mm</span></label>
+        </div>
+        <label class="chk"><input type="checkbox" id="setSpindle" /> Mil motorunu G-code ile çalıştır (M3/M5)</label>
+      </div>
+
+      <nav class="tabs">
+        <button data-tab="design" class="on">Tasarım</button>
+        <button data-tab="machine">Makine</button>
+      </nav>
+
+      <div class="tab" id="tab-design">
+        <section class="card intro" id="noSelCard">
+          <h3>Nasıl çalışır?</h3>
+          <ol class="how">
+            <li><b>Ekle</b><span>Soldaki araç çubuğundan şekil veya metin ekleyin, ya da dosya sürükleyin.</span></li>
+            <li><b>Seç ve ayarla</b><span>Tuvalde bir tasarıma tıklayın; kesim türü, uç ve derinlik burada açılır.</span></li>
+            <li><b>Kontrol et</b><span>Önizleme ve 3D ile kesimin sonucunu görün.</span></li>
+            <li><b>Kes</b><span>Sağ üstteki Kes düğmesi sizi adım adım makineye götürür.</span></li>
+          </ol>
+          <p class="hint">Malzeme, iş sıfırı ve uç ayarları paneldeki üst şerittedir.</p>
+          <div class="btn-row"><button id="btnBits" class="btn small">Uç kütüphanesi</button></div>
+        </section>
+
+        <section class="card" id="objCard" hidden>
+          <div class="card-head">
+            <h3 id="objTitle">Katman</h3>
+            <button type="button" id="btnDelete" class="icon-btn danger" title="Sil" aria-label="Sil"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" /></svg></button>
+          </div>
+          <div class="subtabs" role="tablist">
+            <button type="button" role="tab" data-pane="cut" class="on">Kesim</button>
+            <button type="button" role="tab" data-pane="shape">Şekil ve konum</button>
+          </div>
+          <div class="pane" data-pane="cut">
+            <div id="roleRow">
+            <label>Katman türü (PCB)
+              <select id="objRole">
+                <option value="copper-top">Üst bakır</option>
+                <option value="copper-bottom">Alt bakır</option>
+                <option value="outline">Kart kenarı</option>
+                <option value="drill">Delikler</option>
+                <option value="vector">Çizim (DXF/SVG)</option>
+                <option value="model3d">3D model / rölyef</option>
+                <option value="ignore">Kullanma (maske, serigrafi)</option>
+              </select>
+            </label>
+            </div>
+            <label>Kesim türü <select id="objOp"></select></label>
+            <div id="opInfo" class="op-info" hidden>
+              <div id="opInfoPic" class="op-pic"></div>
+              <p id="opInfoText"></p>
+            </div>
+            <div id="opFields">
+              <label>Uç <select id="objBit"></select></label>
+              <div class="depth-row">
+                <div class="gauge" id="depthGauge" role="slider" tabindex="0" aria-label="Kesim derinliği" title="Derinliği sürükleyerek ayarlayın">
+                  <div class="gauge-cut" id="gaugeCut"></div>
+                  <div class="gauge-ticks" id="gaugeTicks"></div>
+                </div>
+                <div class="row2">
+                  <label title="Ucun ineceği toplam derinlik. Geçiş derinliğinden fazlaysa birkaç katta kesilir.">Derinlik <span class="unit"><input id="objDepth" type="number" step="0.05" min="0.01" /> mm</span></label>
+                  <label data-for="isolation" title="Bakır çevresinde kaç tur atılacağı; her tur kanalı genişletir.">Geçiş sayısı <input id="objPasses" type="number" step="1" min="1" max="20" /></label>
+                  <label data-for="pocket isolation" title="Yan yana geçişlerin üst üste binme oranı. Yüksek değer daha temiz ama daha yavaş.">Bindirme <span class="unit"><input id="objOverlap" type="number" step="5" min="0" max="90" /> %</span></label>
+                </div>
+              </div>
+              <div class="row2" data-for="relief">
+                <label>Model genişliği <span class="unit"><input id="objWidth" type="number" step="1" min="1" /> mm</span></label>
+                <label>Üst yüz
+                  <select id="objOrient">
+                    <option value="top">Üst</option>
+                    <option value="bottom">Alt</option>
+                    <option value="front">Ön</option>
+                    <option value="right">Sağ</option>
+                  </select>
+                </label>
+              </div>
+              <label data-for="relief">Kaba işleme ucu <select id="objRoughBit"></select></label>
+              <div class="row3" data-for="relief">
+                <label>Adım <span class="unit"><input id="objStep" type="number" step="1" min="2" max="60" /> %</span></label>
+                <label>Pay <span class="unit"><input id="objAllow" type="number" step="0.1" min="0" /> mm</span></label>
+                <label>Tarama
+                  <select id="objAngle">
+                    <option value="0">X</option>
+                    <option value="90">Y</option>
+                    <option value="xy">X + Y</option>
+                  </select>
+                </label>
+              </div>
+              <label class="chk" data-for="relief"><input type="checkbox" id="objInvert" /> Ters çevir (kalıp / negatif)</label>
+              <label class="chk" data-for="relief"><input type="checkbox" id="objCutout" /> Oyma bitince dış hattından kes (parçayı çıkar)</label>
+              <div class="row2" id="cutoutFields" hidden>
+                <label>Kesim ucu <select id="objCutBit"></select></label>
+                <label>Tutucu <input id="objCutTabs" type="number" step="1" min="0" max="12" /></label>
+              </div>
+              <div class="row3" data-for="cutout outside inside">
+                <label title="Kesilen parçayı yerinde tutan köprü sayısı. 0 = tutucu yok.">Tutucu <input id="objTabs" type="number" step="1" min="0" max="12" /></label>
+                <label title="Her tutucunun uzunluğu.">Tutucu eni <span class="unit"><input id="objTabW" type="number" step="0.5" min="0.5" /> mm</span></label>
+                <label title="Tutucunun malzeme tabanından yüksekliği (kalınlığı).">Tutucu yük. <span class="unit"><input id="objTabH" type="number" step="0.1" min="0.1" /> mm</span></label>
+              </div>
+              <label data-for="vcarve">Düz taban ucu
+                <select id="objClearBit"></select>
+              </label>
+              <div class="row2" data-for="vcarve">
+                <label>Başlangıç derinliği <span class="unit"><input id="objVStart" type="number" step="0.1" min="0" /> mm</span></label>
+                <div class="btn-row"><button id="btnInlay" class="btn small" title="Bu cebe oturan, aynalanmış bir tıpa ekler">V kakma tıpası ekle</button></div>
+              </div>
+              <label data-for="pocket">Taban deseni
+                <select id="objTexture">
+                  <option value="none">Yok (düz taban)</option>
+                  <option value="lines">Oluklar</option>
+                  <option value="waves">Dalgalar</option>
+                  <option value="scallop">Dalgalı oluklar</option>
+                  <option value="cross">Çapraz</option>
+                  <option value="dimples">Noktalar</option>
+                </select>
+              </label>
+              <div id="texFields" data-for="pocket">
+                <label>Desen ucu <select id="objTexBit"></select></label>
+                <div class="row2">
+                  <label>Desen aralığı <span class="unit"><input id="objTexSpacing" type="number" step="0.5" min="0.5" /> mm</span></label>
+                  <label>Desen derinliği <span class="unit"><input id="objTexDepth" type="number" step="0.1" min="0.05" /> mm</span></label>
+                </div>
+              </div>
+              <p id="objHint" class="hint"></p>
+            </div>
+          </div>
+          <div class="pane" data-pane="shape" hidden>
+            <div id="vecFields" hidden>
+              <h4>Boyut ve açı</h4>
+              <div class="row3">
+                <label>Genişlik <span class="unit"><input id="vecW" type="number" step="0.5" min="0.1" /> mm</span></label>
+                <label>Yükseklik <span class="unit"><input id="vecH" type="number" step="0.5" min="0.1" /> mm</span></label>
+                <label>Açı <span class="unit"><input id="vecRot" type="number" step="5" /> °</span></label>
+              </div>
+              <label class="chk"><input type="checkbox" id="vecLock" checked /> Oranı koru</label>
+              <div id="shpFields" class="row3">
+                <label data-shp="rect">Köşe yarıçapı <span class="unit"><input id="shpR" type="number" step="0.5" min="0" /> mm</span></label>
+                <label data-shp="polygon star">Köşe sayısı <input id="shpN" type="number" step="1" min="3" max="64" /></label>
+                <label data-shp="star">İç oran <span class="unit"><input id="shpInner" type="number" step="5" min="5" max="95" /> %</span></label>
+              </div>
+              <div id="txtFields">
+                <label>Metin <textarea id="txtText" rows="2"></textarea></label>
+                <div class="row2">
+                  <label>Yazı tipi <select id="txtFont"></select></label>
+                  <label>Harf yüksekliği <span class="unit"><input id="txtSize" type="number" step="1" min="1" /> mm</span></label>
+                </div>
+              </div>
+            </div>
+            <h4>Konum</h4>
+            <div class="row2">
+              <label>X <span class="unit"><input id="grpX" type="number" step="0.5" /> mm</span></label>
+              <label>Y <span class="unit"><input id="grpY" type="number" step="0.5" /> mm</span></label>
+            </div>
+            <div class="align-row" role="group" aria-label="Malzemeye hizala">
+              <button type="button" data-align="left" title="Sola hizala" aria-label="Sola hizala"><svg viewBox="0 0 24 24"><path d="M4 3v18" /><rect x="7" y="6" width="12" height="4" /><rect x="7" y="14" width="8" height="4" /></svg></button>
+              <button type="button" data-align="hcenter" title="Yatayda ortala" aria-label="Yatayda ortala"><svg viewBox="0 0 24 24"><path d="M12 3v18" /><rect x="5" y="6" width="14" height="4" /><rect x="7" y="14" width="10" height="4" /></svg></button>
+              <button type="button" data-align="right" title="Sağa hizala" aria-label="Sağa hizala"><svg viewBox="0 0 24 24"><path d="M20 3v18" /><rect x="5" y="6" width="12" height="4" /><rect x="9" y="14" width="8" height="4" /></svg></button>
+              <button type="button" data-align="top" title="Üste hizala" aria-label="Üste hizala"><svg viewBox="0 0 24 24"><path d="M3 4h18" /><rect x="6" y="7" width="4" height="12" /><rect x="14" y="7" width="4" height="8" /></svg></button>
+              <button type="button" data-align="vcenter" title="Dikeyde ortala" aria-label="Dikeyde ortala"><svg viewBox="0 0 24 24"><path d="M3 12h18" /><rect x="6" y="5" width="4" height="14" /><rect x="14" y="7" width="4" height="10" /></svg></button>
+              <button type="button" data-align="bottom" title="Alta hizala" aria-label="Alta hizala"><svg viewBox="0 0 24 24"><path d="M3 20h18" /><rect x="6" y="5" width="4" height="12" /><rect x="14" y="9" width="4" height="8" /></svg></button>
+            </div>
+            <label class="chk"><input type="checkbox" id="grpMirror" /> Aynala (yatay çevir)</label>
+            <div class="btn-row">
+              <button id="btnCenter" class="btn small">Malzemeye ortala</button>
+              <button id="btnDuplicate" class="btn small">Çoğalt</button>
+            </div>
+            <details class="more" id="vecTools">
+              <summary>Gelişmiş vektör düzenleme</summary>
+              <div class="btn-row">
+                <span class="unit"><input id="vecOffset" type="number" step="0.5" value="2" class="narrow" aria-label="Ofset mesafesi" /> mm</span>
+                <button id="btnOffset" class="btn small" title="Dışa (+) veya içe (−) ofset kopyası ekler">Ofset ekle</button>
+                <button id="btnSimplify" class="btn small">Sadeleştir</button>
+                <button id="btnNodes" class="btn small" title="Noktaları sürükleyin; silmek için çift tıklayın">Noktaları düzenle</button>
+              </div>
+              <div class="btn-row" id="boolRow">
+                <select id="vecBoolWith" aria-label="İkinci şekil"></select>
+                <button data-bool="union" class="btn small">Birleştir</button>
+                <button data-bool="subtract" class="btn small">Çıkar</button>
+                <button data-bool="intersect" class="btn small">Kesişim</button>
+              </div>
+            </details>
+          </div>
+        </section>
+      </div>
+
+      <div class="tab" id="tab-machine" hidden>
+        <section class="card step">
+          <div class="card-head">
+            <h3><i class="num">1</i>Bağlan</h3>
+            <span id="grblState" class="state">—</span>
+          </div>
+          <div class="btn-row">
+            <select id="baud" aria-label="Baud hızı"><option>115200</option><option>250000</option><option>57600</option><option>9600</option></select>
+            <button id="btnConnect" class="btn primary">Bağlan</button>
+          </div>
+          <div class="btn-row">
+            <button id="btnUnlock" class="btn small" disabled>Kilidi aç ($X)</button>
+            <button id="btnHome" class="btn small" disabled>Eve git ($H)</button>
+            <button id="btnReset" class="btn small danger" disabled>Sıfırla</button>
+          </div>
+          <p id="serialHint" class="hint"></p>
+          <details class="more">
+            <summary>Makine profili: <b id="mcName"></b></summary>
+            <div class="btn-row">
+              <select id="mcProfile" aria-label="Makine profili"></select>
+              <button id="mcAdd" class="btn small">Farklı kaydet</button>
+              <button id="mcDel" class="btn small danger">Sil</button>
+            </div>
+            <div class="row3">
+              <label>Alan X <span class="unit"><input id="mcX" type="number" step="10" min="10" /> mm</span></label>
+              <label>Alan Y <span class="unit"><input id="mcY" type="number" step="10" min="10" /> mm</span></label>
+              <label>Z stroku <span class="unit"><input id="mcZ" type="number" step="5" min="5" /> mm</span></label>
+            </div>
+            <label>İş sonunda park
+              <select id="mcPark">
+                <option value="origin">Başlangıç noktasında (X0 Y0)</option>
+                <option value="back">Malzemenin arkasında (tabla boşalır)</option>
+              </select>
+            </label>
+            <p class="hint">Alan, kesimin makineye sığıp sığmadığını kontrol etmek için kullanılır. Park ayarı yalnızca son işe uygulanır; aradaki işler uç değişimi için X0 Y0'da bekler.</p>
+          </details>
+        </section>
+
+        <section class="card step machine-ctl" id="zeroCard">
+          <div class="card-head">
+            <h3><i class="num">2</i>Sıfır noktasını ayarla</h3>
+          </div>
+          <p class="zero-at">Başlangıç noktası: <b id="zeroLabel"></b> (<a href="#" id="zeroChange" role="button">değiştir</a>)</p>
+          <p class="hint">Tuvaldeki kırmızı/yeşil eksen işareti bu noktayı gösterir.</p>
+          <div class="dro">
+            <div><span>X</span><b id="droX">0.000</b></div>
+            <div><span>Y</span><b id="droY">0.000</b></div>
+            <div><span>Z</span><b id="droZ">0.000</b></div>
+          </div>
+          <div class="jog">
+            <div class="pad">
+              <span></span><button data-jog="Y+" disabled>Y+</button><span></span>
+              <button data-jog="X-" disabled>X−</button><span class="pad-mid">XY</span><button data-jog="X+" disabled>X+</button>
+              <span></span><button data-jog="Y-" disabled>Y−</button><span></span>
+            </div>
+            <div class="zpad">
+              <button data-jog="Z+" disabled>Z+</button>
+              <button data-jog="Z-" disabled>Z−</button>
+            </div>
+          </div>
+          <div class="row2">
+            <label>Adım
+              <select id="jogStep"><option>0.01</option><option>0.05</option><option>0.1</option><option selected>1</option><option>5</option><option>10</option><option>50</option></select>
+            </label>
+            <label>Hız <span class="unit"><input id="jogFeed" type="number" value="800" step="50" /> mm/dk</span></label>
+          </div>
+          <p class="hint">Klavye: ok tuşları X/Y, Page Up/Down Z.</p>
+          <ol class="zero-steps">
+            <li>
+              <span>Ucu malzemede bu noktanın üstüne sürün.</span>
+              <button id="btnSetXY" class="btn small" disabled>XY sıfırını burada ayarla</button>
+              <em id="zeroXY" class="zero-flag">Ayarlanmadı</em>
+            </li>
+            <li>
+              <span>Z'yi yavaşça indirin (0.05 / 0.01 adım). Ucun altına bir kâğıt koyun; kâğıt hafifçe sıkışınca durun.</span>
+              <button id="btnSetZ" class="btn small" disabled>Z sıfırını burada ayarla</button>
+              <em id="zeroZ" class="zero-flag">Ayarlanmadı</em>
+            </li>
+            <li>
+              <span>Kontrol: uç güvenli yükseklikte tasarımın çevresini gezsin.</span>
+              <button id="btnFrame" class="btn small" disabled>Çerçeveyi gez</button>
+            </li>
+          </ol>
+          <label class="chk"><input type="checkbox" id="paperComp" /> Kâğıt kalınlığını düş (0.1 mm)</label>
+          <details class="more">
+            <summary>Z probu ve yüzey tarama</summary>
+            <p class="hint">Timsah klipsi uca, diğer ucu bakır plakete bağlayın. Probe pini Arduino'da A5.</p>
+            <div class="row2">
+              <label>Plaka kalınlığı <span class="unit"><input id="probePlate" type="number" value="0" step="0.1" /> mm</span></label>
+              <label>Prob hızı <span class="unit"><input id="probeFeed" type="number" value="60" step="10" /> mm/dk</span></label>
+            </div>
+            <button id="btnProbe" class="btn small" disabled>Z probla</button>
+            <h4>Yüzey haritası (auto-level)</h4>
+            <div class="row2">
+              <label>X nokta <input id="alNx" type="number" value="4" min="2" max="20" /></label>
+              <label>Y nokta <input id="alNy" type="number" value="3" min="2" max="20" /></label>
+            </div>
+            <div class="btn-row">
+              <button id="btnAutolevel" class="btn small" disabled>Yüzeyi tara</button>
+              <label class="chk"><input type="checkbox" id="alApply" disabled /> Kesimde uygula</label>
+            </div>
+            <p id="alInfo" class="hint"></p>
+          </details>
+          <details class="more">
+            <summary>Diğer kontroller</summary>
+            <div class="btn-row">
+              <button class="btn small" data-zero="X" disabled>Yalnız X=0</button>
+              <button class="btn small" data-zero="Y" disabled>Yalnız Y=0</button>
+              <button class="btn small" data-zero="Z" disabled>Yalnız Z=0</button>
+            </div>
+            <div class="btn-row">
+              <button id="btnGoZero" class="btn small" disabled>XY sıfıra git</button>
+              <button id="btnSpindleOn" class="btn small" disabled>Mil aç</button>
+              <button id="btnSpindleOff" class="btn small" disabled>Mil kapat</button>
+            </div>
+          </details>
+        </section>
+
+        <section class="card step" id="jobsCard">
+          <div class="card-head">
+            <h3><i class="num">3</i>Kes</h3>
+          </div>
+          <p class="hint">Her uç ayrı bir iştir. İşleri sırayla başlatın; kesimden önce kontrol listesi, işler arasında uç değişimi rehberi açılır.</p>
+          <ol id="jobList" class="jobs"></ol>
+          <div id="jobRun" class="job-run" hidden>
+            <div class="progress"><i id="jobBar"></i></div>
+            <p id="jobText" class="hint"></p>
+            <div class="btn-row">
+              <button id="btnPause" class="btn small hold">Duraklat</button>
+              <button id="btnResume" class="btn small go">Devam</button>
+              <button id="btnStop" class="btn small stop">Durdur</button>
+            </div>
+            <div class="ovr">
+              <span>Besleme <b id="ovFeed">100%</b></span>
+              <button class="btn tiny" data-ov="feed:down" aria-label="Beslemeyi %10 azalt">−10</button>
+              <button class="btn tiny" data-ov="feed:reset">100</button>
+              <button class="btn tiny" data-ov="feed:up" aria-label="Beslemeyi %10 artır">+10</button>
+              <span>Devir <b id="ovSpindle">100%</b></span>
+              <button class="btn tiny" data-ov="spindle:down" aria-label="Devri %10 azalt">−10</button>
+              <button class="btn tiny" data-ov="spindle:reset">100</button>
+              <button class="btn tiny" data-ov="spindle:up" aria-label="Devri %10 artır">+10</button>
+            </div>
+          </div>
+        </section>
+
+        <details class="card fold">
+          <summary><h3>Konsol</h3></summary>
+          <pre id="console" class="console"></pre>
+          <form id="consoleForm" class="btn-row">
+            <input id="consoleInput" placeholder="G-code veya $ komutu" autocomplete="off" />
+            <button class="btn small">Gönder</button>
+          </form>
+        </details>
+      </div>
+    </aside>
+  </main>
+
+  <dialog id="bitDialog" class="dialog">
+    <form method="dialog">
+      <h3>Uç kütüphanesi</h3>
+      <div class="table-wrap">
+        <table class="bits">
+          <thead><tr><th>Ad</th><th>Tür</th><th>Çap / uç</th><th>Açı</th><th>İlerleme</th><th>Dalma</th><th>Devir</th><th>Kat derinliği</th><th></th></tr></thead>
+          <tbody id="bitRows"></tbody>
+        </table>
+      </div>
+      <p class="hint">V uçta "çap" uç genişliğidir; gerçek kanal genişliği derinliğe göre hesaplanır. Hızlar mm/dk.</p>
+      <div class="btn-row end">
+        <button type="button" id="btnBitAdd" class="btn small">Uç ekle</button>
+        <button type="button" id="btnBitReset" class="btn small ghost">Varsayılanlara dön</button>
+        <button class="btn primary">Kapat</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="aboutDialog" class="dialog about">
+    <form method="dialog">
+      <div class="about-head">
+        <svg viewBox="0 0 32 32" width="44" height="44" aria-hidden="true"><rect x="9" y="2" width="14" height="13" rx="2" fill="currentColor" opacity=".9"/><path d="M12 15h8l-1.5 5h-5z" fill="currentColor" opacity=".7"/><path d="M15 20h2v6l-1 3-1-3z" fill="var(--amber)"/><path d="M3 30h26" stroke="currentColor" stroke-width="2" opacity=".5"/></svg>
+        <div>
+          <h3>Router Studio</h3>
+          <p class="about-version">Sürüm <b class="app-version"></b></p>
+        </div>
+      </div>
+      <p>Tarayıcıda çalışan CNC CAM ve GRBL kontrol programı: tasarım, V oyma, 3D oyma, PCB, simülasyon ve makine kontrolü tek yerde. Kurulum gerekmez; dosyalarınız bilgisayarınızdan çıkmaz.</p>
+      <dl class="about-list">
+        <dt>Geliştirici</dt><dd>Erdem Erciyas</dd>
+        <dt>E-posta</dt><dd><a href="mailto:erdem.erciyas@gmail.com">erdem.erciyas@gmail.com</a></dd>
+        <dt>Web</dt><dd><a href="https://fixral3d.github.io/cnc-controller/" target="_blank" rel="noopener">fixral3d.github.io/cnc-controller</a></dd>
+      </dl>
+      <p class="hint">Yazı tipleri: Google Fonts (SIL Open Font License / Apache 2.0). Makine kontrolü için Chrome veya Edge gerekir.</p>
+      <div class="btn-row end">
+        <button value="close" class="btn primary">Kapat</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="appsDialog" class="dialog apps">
+    <form method="dialog">
+      <h3>Uygulamalar</h3>
+      <p class="hint">• işaretli uygulamalar tuvalde seçili tasarım üzerinde çalışır.</p>
+      <div id="appList" class="app-list"></div>
+      <div id="appForm" hidden>
+        <h4 id="appTitle"></h4>
+        <p class="hint" id="appDesc"></p>
+        <div id="appParams" class="row2"></div>
+      </div>
+      <div class="btn-row end">
+        <button value="cancel" class="btn ghost">Kapat</button>
+        <button type="button" id="appRun" class="btn primary" disabled>Oluştur</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="toolDialog" class="dialog review">
+    <form method="dialog">
+      <h3 id="toolTitle">Uç değişimi</h3>
+      <p class="hint" id="toolText"></p>
+      <ol class="zero-steps">
+        <li><span>Ucu çıkarın, <b id="toolNext"></b> takın.</span></li>
+        <li>
+          <span>Ucu bu noktada yüzeye indirin. Altına kâğıt koyun; kâğıt hafifçe sıkışınca durun.</span>
+          <div class="tc-jog">
+            <span class="tc-z">Z <b id="tcZ">—</b></span>
+            <button type="button" class="btn small" data-tcz="1">Z +1</button>
+            <button type="button" class="btn small" data-tcz="-5">Z −5</button>
+            <button type="button" class="btn small" data-tcz="-1">Z −1</button>
+            <button type="button" class="btn small" data-tcz="-0.1">Z −0.1</button>
+            <button type="button" class="btn small" data-tcz="-0.05">Z −0.05</button>
+            <button type="button" class="btn small" data-tcz="-0.01">Z −0.01</button>
+          </div>
+          <button type="button" id="tcSetZ" class="btn small">Z sıfırını burada ayarla</button>
+          <em id="tcZFlag" class="zero-flag">Ayarlanmadı</em>
+        </li>
+      </ol>
+      <div class="btn-row end">
+        <button value="later" class="btn ghost">Sonra</button>
+        <button value="next" class="btn primary" id="tcNext">Sonraki işe geç</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="reviewDialog" class="dialog review">
+    <form method="dialog">
+      <h3 id="reviewTitle">Kesim öncesi kontrol</h3>
+      <ul id="reviewList" class="review-list"></ul>
+      <div class="btn-row end">
+        <button value="sim" class="btn">Simüle et</button>
+        <button value="cancel" class="btn ghost">Vazgeç</button>
+        <button value="run" class="btn go" id="reviewRun">Kesimi başlat</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+</body>
+</html>

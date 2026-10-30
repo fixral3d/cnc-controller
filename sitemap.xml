@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://fixral3d.github.io/cnc-controller/</loc><lastmod>2026-10-30</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/"/>
+  </url>
+  <url>
+    <loc>https://fixral3d.github.io/cnc-controller/en/</loc><lastmod>2026-10-30</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/"/>
+  </url>
+  <url>
+    <loc>https://fixral3d.github.io/cnc-controller/de/</loc><lastmod>2026-10-30</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/"/>
+  </url>
+  <url>
+    <loc>https://fixral3d.github.io/cnc-controller/rehber.html</loc><lastmod>2026-10-30</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/rehber.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/guide.html"/>
+  </url>
+  <url>
+    <loc>https://fixral3d.github.io/cnc-controller/en/guide.html</loc><lastmod>2026-10-30</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/rehber.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/guide.html"/>
+  </url>
+  <url>
+    <loc>https://fixral3d.github.io/cnc-controller/de/guide.html</loc><lastmod>2026-10-30</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/rehber.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/guide.html"/>
+  </url>
+</urlset>

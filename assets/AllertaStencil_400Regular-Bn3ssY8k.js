@@ -1,0 +1,1 @@
+var e=`/cnc-controller/assets/AllertaStencil_400Regular-BB74tIo9.ttf`;export{e as default};

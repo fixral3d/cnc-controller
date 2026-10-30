@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online CNC Guide: Design, V-Carving, 3D Carving and PCB | Router Studio</title>
+  <meta name="description" content="Router Studio user guide: design shapes and text in the browser, V-carve and make inlays, carve STL models and photos in 3D, cut DXF/SVG, mill PCBs from Gerber and send the job to your GRBL machine. Step by step, with FAQ." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1e2328" />
+  <link rel="canonical" href="https://fixral3d.github.io/cnc-controller/en/guide.html" />
+  <link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/guide.html" />
+  <link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/guide.html" />
+  <link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Router Studio" />
+  <meta property="og:title" content="Online CNC Guide: Design, V-Carving, 3D Carving and PCB" />
+  <meta property="og:description" content="Shape and text design, V-carving and inlays, 3D carving, DXF/SVG cutting, PCB from Gerber and cutting with GRBL from the browser — step by step." />
+  <meta property="og:url" content="https://fixral3d.github.io/cnc-controller/en/guide.html" />
+  <meta property="og:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Router Studio — online CNC CAM &amp; GRBL control" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I carve text or a logo with a CNC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add Text from the left toolbar or open your SVG/DXF logo. Choose V-carve in the Cut tab and assign a V-bit for sharp corners. Use Pocket for flat-bottomed lettering, or Outside to cut the letters out as parts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I make a V-carve inlay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Give the shape a V-carve operation and press \"Add V-inlay plug\". The app creates a mirrored plug. Cut the pocket in one board and the plug in a second board of another colour, glue and sand flush."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which machines does it work with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Machines running GRBL 1.1: Arduino Uno + CNC Shield, 3018-style desktop routers and similar. It connects through the browser's Web Serial API; Chrome or Edge is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I mill a PCB from Gerber files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the Gerber folder from the File menu. Copper, board outline and drill layers are recognised automatically. Choose the bits and press Carve; the app creates separate jobs for isolation, drilling and the outline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use it without a Z probe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Lower the bit onto a sheet of paper and press \"Set Z zero here\". With a probe you can also use automatic Z probing and a height map."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it free, and does it need installing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is free, runs entirely in the browser, and your files never leave your computer."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>:root{--body:#1e2328;--panel:#262c32;--ink:#e7eaed;--ink-2:#a3acb5;--amber:#ffb020;--go:#2fb36d;--line:#353d45;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}*{box-sizing:border-box}body{background:var(--body);color:var(--ink);margin:0;font:400 17px/1.65 Barlow,system-ui,sans-serif}header{background:linear-gradient(#2f363d,#252b31);border-bottom:1px solid #14181b;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px;display:flex}header a.brand{color:#dfe4e8;font:700 19px Barlow Semi Condensed,sans-serif;text-decoration:none}.langs{gap:4px;margin-left:auto;margin-right:12px;display:flex}.langs a{color:var(--ink-2);border-radius:4px;padding:4px 8px;font-size:14px;font-weight:600;text-decoration:none}.langs a[aria-current]{color:#1d1608;background:var(--amber)}.cta{color:#fff;background:linear-gradient(180deg, #3ccb7f, var(--go));border:1px solid #1f7a4b;border-radius:6px;padding:9px 20px;font-weight:600;text-decoration:none;display:inline-block;box-shadow:0 0 16px #2fb36d4d}main{max-width:760px;margin:0 auto;padding:48px 20px 80px}h1{margin:0 0 18px;font:700 clamp(30px,5vw,44px)/1.12 Barlow Semi Condensed,sans-serif}h2{margin:46px 0 12px;font:700 25px/1.25 Barlow Semi Condensed,sans-serif}h3{margin:26px 0 6px;font:600 19px/1.3 Barlow Semi Condensed,sans-serif}p,li{color:#d3d9de}.lead{color:var(--ink-2);font-size:19px}a{color:var(--amber)}ol li,ul li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15.5px}th,td{text-align:left;border-bottom:1px solid var(--line);vertical-align:top;padding:9px 10px}th{color:var(--ink-2);font-weight:600}code{color:var(--amber);background:#101417;border-radius:4px;padding:1px 6px;font-size:.92em}footer{border-top:1px solid var(--line);text-align:center;color:var(--ink-2);padding:24px 20px;font-size:14px}</style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">Router Studio</a>
+    <nav class="langs"><a href="../rehber.html">TR</a><a href="guide.html" aria-current="page">EN</a><a href="../de/guide.html">DE</a></nav>
+    <a class="cta" href="./">Open the app</a>
+  </header>
+  <main>
+    <article>
+      <h1>Online CNC guide: design, V-carving, 3D carving and PCB</h1>
+      <p class="lead">Router Studio is free CNC software that designs shapes and text, V-carves and makes inlays, carves 3D models and photos, cuts DXF/SVG drawings, mills PCBs from Gerber files, simulates the job in 3D and streams it to your GRBL machine from the browser. No install; your files never leave your computer.</p>
+
+      <h2>The interface at a glance</h2>
+      <ul>
+        <li><strong>Top menus.</strong> <em>File</em>: new project, open, save, add file, Gerber folder. <em>View</em>: layer panel, rulers, grid, rapid moves, zoom. <em>Help</em>: guide, assistant and version information (About).</li>
+        <li><strong>Left toolbar.</strong> Shapes, text, freehand drawing, nesting, apps and file import.</li>
+        <li><strong>Canvas.</strong> Millimetre rulers along the top and left edges. Drag a design to move it; right-click to duplicate, align or delete. Switch between Design, Preview and 3D.</li>
+        <li><strong>Right panel.</strong> The strip at the top holds material, work zero and bit settings. The selected design has two tabs: <em>Cut</em> (cut type, bit, depth) and <em>Shape and position</em> (size, angle, text, position).</li>
+        <li><strong>Machine tab.</strong> Three steps: 1 Connect, 2 Set the zero point, 3 Carve.</li>
+      </ul>
+
+      <h2>Supported files</h2>
+      <table>
+        <thead><tr><th>File</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td>Built-in shapes and text</td><td>Rectangle, circle, polygon, star, heart, line; text in 6 fonts</td></tr>
+          <tr><td>DXF, SVG</td><td>On line, outside, inside, pocket and V-carve</td></tr>
+          <tr><td>STL, OBJ, 3MF</td><td>3D carving: roughing and ball-nose finishing</td></tr>
+          <tr><td>PNG, JPG, WEBP, BMP</td><td>Relief from a photo or logo (light = high)</td></tr>
+          <tr><td>Gerber (<code>.gtl .gbl .gko .gm1 .gbr</code>)</td><td>Copper isolation milling, board outline</td></tr>
+          <tr><td>Excellon (<code>.drl .xln</code>)</td><td>Drilling; larger holes are milled around</td></tr>
+          <tr><td>Folder or <code>.zip</code></td><td>KiCad / EasyEDA Gerber output in one go</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Cut types</h2>
+      <table>
+        <thead><tr><th>Cut type</th><th>What it does</th><th>Bit</th></tr></thead>
+        <tbody>
+          <tr><td>On line</td><td>The bit centre follows the line; for engraving and line art such as mazes.</td><td>V-bit or small end mill</td></tr>
+          <tr><td>Outside</td><td>Cuts a part out around its edge, keeping its size. Tabs hold it in place.</td><td>End mill</td></tr>
+          <tr><td>Inside</td><td>Cuts a hole from the inside, keeping the hole size.</td><td>End mill</td></tr>
+          <tr><td>Pocket</td><td>Clears the inside of a shape to a flat floor. Offset or raster fill, optional floor texture.</td><td>End mill, ball nose for texture</td></tr>
+          <tr><td>V-carve</td><td>Depth follows the width, giving sharp corners in lettering. Wide areas get a flat floor.</td><td>V-bit (+ optional end mill)</td></tr>
+          <tr><td>3D carving</td><td>Carves a model surface with roughing and finishing passes.</td><td>End mill + ball nose</td></tr>
+          <tr><td>Isolation, drill, outline</td><td>PCBs from Gerber/Excellon files.</td><td>V-bit, drill, 1 mm end mill</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Designing shapes and text</h2>
+      <ol>
+        <li><strong>Add.</strong> Pick a shape or text in the left toolbar. The new design lands in free space on the stock and the <em>Shape and position</em> tab opens.</li>
+        <li><strong>Size it.</strong> Enter width, height and angle; "Keep proportions" scales evenly. Set the corner radius, number of corners, font and letter height.</li>
+        <li><strong>Edit.</strong> "Advanced vector editing" offers offset copies, simplify, point editing and union, subtract or intersect with a second shape. The freehand tool draws by hand.</li>
+        <li><strong>Arrange.</strong> Use the align buttons, "Center on material", the right-click menu and Nest in the toolbar. Ctrl+Z / Ctrl+Y undo and redo.</li>
+      </ol>
+      <p>Overlapping parts of letters are merged into one outline, so every cut follows only the visible edge. If the bit does not fit a thin part of a letter, the app tells you how much of the area will stay uncut.</p>
+
+      <h2>V-carving and inlays: step by step</h2>
+      <ol>
+        <li><strong>Select the shape</strong> and set the cut type to <em>V-carve</em> in the Cut tab. A suitable V-bit is assigned.</li>
+        <li><strong>Enter the depth.</strong> This is the maximum depth; wider areas get a flat floor. Pick a "Flat-floor bit" to clear them quickly.</li>
+        <li><strong>For an inlay</strong> press "Add V-inlay plug". A mirrored plug is created; the "Start depth" leaves a glue gap between plug and pocket.</li>
+        <li><strong>Cut separately.</strong> Cut the pocket in one board and the plug in a second board of another colour; hide the one you are not cutting. Glue the plug in and sand flush. Try it on scrap first.</li>
+      </ol>
+
+      <h2>3D carving: step by step</h2>
+      <ol>
+        <li><strong>Add the model.</strong> Use File → Add file to choose an STL, OBJ, 3MF or a photo. The model shows in 3D; orbit it with the mouse.</li>
+        <li><strong>Set size and orientation.</strong> Choose the width, depth and the face that points up. Tick "Invert" for a mould.</li>
+        <li><strong>Choose the bits.</strong> An end mill (e.g. 3.175 mm) for roughing and a ball nose for finishing. Set the raster to "X + Y" for a smoother surface.</li>
+        <li><strong>Simulate and carve.</strong> Check the carved surface in 3D. Optionally cut the part free along its outline.</li>
+      </ol>
+
+      <h2>PCB from Gerber: step by step</h2>
+      <ol>
+        <li><strong>Open the folder.</strong> Use File → Open Gerber folder. Copper, outline and drill layers are recognised; mask and silkscreen are skipped.</li>
+        <li><strong>Enter the material.</strong> In the Material item of the strip, type the size of the copper board and place the PCB on it.</li>
+        <li><strong>Choose the bits.</strong> A V-bit for isolation (e.g. 30° · 0.2 mm), a 0.8 mm end mill for holes and a 1 mm end mill for the outline. The app works out the V-bit groove width from the depth.</li>
+        <li><strong>Simulate and carve.</strong> Jobs run by bit: isolation, drilling, outline. After each job the machine parks and guides you through the bit change.</li>
+      </ol>
+
+      <h2>Nesting, fill and apps</h2>
+      <ul>
+        <li><strong>Nest.</strong> Arranges every part on the stock, largest first; parts that do not fit are left to the right of the stock.</li>
+        <li><strong>Fill the stock with this.</strong> From the right-click menu, fills the stock with copies of the selected part around the other parts.</li>
+        <li><strong>Apps.</strong> Box maker (5 finger-jointed panels), gear, maze, honeycomb, hole grid, radial array and dog-bone corners. Dog-bones add bit-radius reliefs to inner corners so joints fit fully.</li>
+      </ul>
+
+      <h2>Carving: three steps at the machine</h2>
+      <ol>
+        <li><strong>Connect.</strong> Press Connect in the Machine tab and pick your GRBL board's port. Set the work area and the park position in the machine profile.</li>
+        <li><strong>Set the zero point.</strong> Jog the bit to the start point, set the XY zero, then the Z zero with the paper method. "Trace frame" checks the position without cutting.</li>
+        <li><strong>Carve.</strong> Start the jobs in order; a checklist opens first. While cutting, change feed and spindle speed in 10% steps. If a bit breaks or the job stops, use "Resume from line".</li>
+      </ol>
+      <p>For stock longer than your machine, turn on <em>tiling</em> in the Work zero panel: the job is split into bands along Y and you move the stock by the given length after each band.</p>
+
+      <h2>Connecting a machine</h2>
+      <p>Router Studio works with machines running GRBL 1.1: Arduino Uno + CNC Shield V3, 3018-style desktop routers and similar. It connects through the browser's Web Serial API, so use Chrome or Edge. You can also download the G-code as an <code>.nc</code> file and send it with Candle or UGS.</p>
+
+      <h2>Frequently asked questions</h2>
+      <h3>How do I carve text or a logo?</h3>
+      <p>Add Text from the left toolbar or open your SVG/DXF logo. Use V-carve for sharp corners, Pocket for flat-bottomed lettering or Outside to cut the letters out as parts.</p>
+      <h3>Can I use it without a Z probe?</h3>
+      <p>Yes. Lower the bit onto a sheet of paper and press "Set Z zero here". With a probe you can also use automatic Z probing and a height map (auto-level).</p>
+      <h3>Can I open DWG files?</h3>
+      <p>DWG is a closed format. Save the drawing as DXF in AutoCAD, LibreCAD or ODA File Converter and import that.</p>
+      <h3>Are my files uploaded to a server?</h3>
+      <p>No. Everything runs in your browser; your files never leave your computer.</p>
+      <h3>How is it different from Easel?</h3>
+      <p>Router Studio is free with no carve limit, and V-carving, V-inlays, 3D carving, textured pockets, nesting and tiling are open to everyone. It also reads Gerber and Excellon files directly, mills PCB isolation paths and offers height maps (auto-level).</p>
+
+      <p style="margin-top:40px"><a class="cta" href="./">Open Router Studio in your browser</a></p>
+    </article>
+  </main>
+  <footer>Router Studio — browser-based CNC design, CAM and GRBL control software. · v2.0.0 · <a href="mailto:erdem.erciyas@gmail.com">erdem.erciyas@gmail.com</a></footer>
+</body>
+</html>

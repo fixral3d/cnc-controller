@@ -1,0 +1,1 @@
+var e=`/cnc-controller/assets/Pacifico_400Regular-DqRvctb9.ttf`;export{e as default};

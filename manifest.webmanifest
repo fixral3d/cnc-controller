@@ -1,0 +1,11 @@
+{
+  "name": "Router Studio — Online CNC Tasarım, CAM ve GRBL Kontrol",
+  "description": "Tarayıcıda CNC tasarım, V oyma, 3D oyma, PCB ve GRBL kontrol.",
+  "short_name": "Router Studio",
+  "lang": "tr",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1e2328",
+  "theme_color": "#1e2328",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

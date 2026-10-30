@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online CNC Rehberi: Tasarım, V Oyma, 3D Oyma ve PCB | Router Studio</title>
+  <meta name="description" content="Router Studio kullanım rehberi: tarayıcıda şekil ve metin tasarlayın, V oyma ve kakma yapın, STL ve fotoğraftan 3D oyun, DXF/SVG'den kesin, Gerber'den PCB kazıyın ve GRBL makinenize gönderin. Adım adım anlatım ve sık sorulan sorular." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1e2328" />
+  <link rel="canonical" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="alternate" hreflang="tr" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="alternate" hreflang="en" href="https://fixral3d.github.io/cnc-controller/en/guide.html" />
+  <link rel="alternate" hreflang="de" href="https://fixral3d.github.io/cnc-controller/de/guide.html" />
+  <link rel="alternate" hreflang="x-default" href="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="Router Studio" />
+  <meta property="og:title" content="Online CNC Rehberi: Tasarım, V Oyma, 3D Oyma ve PCB" />
+  <meta property="og:description" content="Şekil ve metin tasarımı, V oyma ve kakma, 3D oyma, DXF/SVG kesimi, Gerber'den PCB ve GRBL ile tarayıcıdan kesim — adım adım." />
+  <meta property="og:url" content="https://fixral3d.github.io/cnc-controller/rehber.html" />
+  <meta property="og:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Router Studio — online CNC CAM &amp; GRBL control" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fixral3d.github.io/cnc-controller/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Yazı veya logo CNC ile nasıl oyulur?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sol araç çubuğundan Metin ekleyin ya da SVG/DXF logonuzu açın. Kesim sekmesinde V oyma seçip V uç atayın: köşeler keskin çıkar. Düz tabanlı yazı için Cep, harfi parça olarak çıkarmak için Dıştan seçin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "V oyma kakma (inlay) nasıl yapılır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Şekle V oyma verin ve 'V kakma tıpası ekle'ye basın. Program aynalanmış bir tıpa oluşturur. Cebi bir malzemeye, tıpayı farklı renkte ikinci malzemeye kesin, yapıştırıp zımparalayın."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hangi makinelerle çalışır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GRBL 1.1 çalıştıran makinelerle: Arduino Uno + CNC Shield, 3018 tipi masaüstü routerlar ve benzerleri. Bağlantı tarayıcının Web Serial özelliğiyle yapılır; Chrome veya Edge gerekir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gerber dosyasından PCB nasıl kazınır?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dosya menüsünden Gerber klasörünü açın. Bakır, kart kenarı ve delik katmanları otomatik tanınır. Uçları seçip Kes'e basın; program izolasyon, delik ve kart kesimi için ayrı işler oluşturur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Z probu olmadan kullanılabilir mi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evet. Ucu kâğıt yöntemiyle yüzeye indirip 'Z sıfırını burada ayarla'ya basmanız yeterli. Prob varsa otomatik Z probu ve yüzey haritası da kullanılabilir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Program ücretli mi, kurulum gerekiyor mu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hayır. Router Studio ücretsizdir, tamamen tarayıcıda çalışır ve dosyalarınız bilgisayarınızdan dışarı gönderilmez."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>:root{--body:#1e2328;--panel:#262c32;--ink:#e7eaed;--ink-2:#a3acb5;--amber:#ffb020;--go:#2fb36d;--line:#353d45;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark}*{box-sizing:border-box}body{background:var(--body);color:var(--ink);margin:0;font:400 17px/1.65 Barlow,system-ui,sans-serif}header{background:linear-gradient(#2f363d,#252b31);border-bottom:1px solid #14181b;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px;display:flex}header a.brand{color:#dfe4e8;font:700 19px Barlow Semi Condensed,sans-serif;text-decoration:none}.cta{color:#fff;background:linear-gradient(180deg, #3ccb7f, var(--go));border:1px solid #1f7a4b;border-radius:6px;padding:9px 20px;font-weight:600;text-decoration:none;display:inline-block;box-shadow:0 0 16px #2fb36d4d}main{max-width:760px;margin:0 auto;padding:48px 20px 80px}h1{margin:0 0 18px;font:700 clamp(30px,5vw,44px)/1.12 Barlow Semi Condensed,sans-serif}h2{margin:46px 0 12px;font:700 25px/1.25 Barlow Semi Condensed,sans-serif}h3{margin:26px 0 6px;font:600 19px/1.3 Barlow Semi Condensed,sans-serif}p,li{color:#d3d9de}.lead{color:var(--ink-2);font-size:19px}a{color:var(--amber)}ol li,ul li{margin-bottom:8px}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15.5px}th,td{text-align:left;border-bottom:1px solid var(--line);vertical-align:top;padding:9px 10px}th{color:var(--ink-2);font-weight:600}code{color:var(--amber);background:#101417;border-radius:4px;padding:1px 6px;font-size:.92em}.langs{gap:4px;margin-left:auto;margin-right:12px;display:flex}.langs a{color:var(--ink-2);border-radius:4px;padding:4px 8px;font-size:14px;font-weight:600;text-decoration:none}.langs a[aria-current]{color:#1d1608;background:var(--amber)}footer{border-top:1px solid var(--line);text-align:center;color:var(--ink-2);padding:24px 20px;font-size:14px}</style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">Router Studio</a>
+    <nav class="langs"><a href="rehber.html" aria-current="page">TR</a><a href="en/guide.html">EN</a><a href="de/guide.html">DE</a></nav>
+    <a class="cta" href="./">Programı aç</a>
+  </header>
+  <main>
+    <article>
+      <h1>Online CNC rehberi: tasarım, V oyma, 3D oyma ve PCB</h1>
+      <p class="lead">Router Studio; şekil ve metin tasarlayan, V oyma ve kakma yapan, 3D modelleri ve fotoğrafları oyan, DXF/SVG çizimleri kesen, Gerber dosyalarından PCB kazıyan, işi 3D simüle eden ve GRBL makinenize tarayıcıdan gönderen ücretsiz bir CNC programıdır. Kurulum gerekmez, dosyalarınız bilgisayarınızdan çıkmaz.</p>
+
+      <h2>Arayüze kısa bakış</h2>
+      <ul>
+        <li><strong>Üst menüler.</strong> <em>Dosya</em>: yeni proje, aç, kaydet, dosya ekle, Gerber klasörü. <em>Görünüm</em>: katman paneli, cetveller, ızgara, boşta hareketler, yakınlaştırma. <em>Yardım</em>: rehber, asistan ve sürüm bilgisi (Hakkında).</li>
+        <li><strong>Sol araç çubuğu.</strong> Şekil, metin, serbest çizim, parçaları yerleştirme, uygulamalar ve dosya ekleme.</li>
+        <li><strong>Tuval.</strong> Üst ve sol kenarda milimetre cetvelleri vardır. Tasarımı sürükleyerek taşıyın, sağ tıklayarak çoğaltın, hizalayın veya silin. Tasarım, Önizleme ve 3D arasında geçiş yapın.</li>
+        <li><strong>Sağ panel.</strong> En üstteki şeritte malzeme, iş sıfırı ve uç ayarları bulunur. Seçili tasarımın ayarları iki sekmededir: <em>Kesim</em> (kesim türü, uç, derinlik) ve <em>Şekil ve konum</em> (boyut, açı, metin, konum).</li>
+        <li><strong>Makine sekmesi.</strong> Üç adım: 1 Bağlan, 2 Sıfır noktasını ayarla, 3 Kes.</li>
+      </ul>
+
+      <h2>Desteklenen dosyalar</h2>
+      <table>
+        <thead><tr><th>Dosya</th><th>Ne için</th></tr></thead>
+        <tbody>
+          <tr><td>Dahili şekil ve metin</td><td>Dikdörtgen, daire, çokgen, yıldız, kalp, çizgi; 6 yazı tipiyle metin</td></tr>
+          <tr><td>DXF, SVG</td><td>Çizgi üzerinden, dıştan, içten, cep ve V oyma</td></tr>
+          <tr><td>STL, OBJ, 3MF</td><td>3D oyma: kaba boşaltma ve küresel freze son geçişi</td></tr>
+          <tr><td>PNG, JPG, WEBP, BMP</td><td>Fotoğraf veya logodan rölyef (açık renk = yüksek)</td></tr>
+          <tr><td>Gerber (<code>.gtl .gbl .gko .gm1 .gbr</code>)</td><td>Bakır izolasyon frezeleme, kart kenarı kesimi</td></tr>
+          <tr><td>Excellon (<code>.drl .xln</code>)</td><td>Delik delme; büyük delikleri çevresel frezeleme</td></tr>
+          <tr><td>Klasör veya <code>.zip</code></td><td>KiCad / EasyEDA Gerber çıktısını tek seferde aktarma</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Kesim türleri</h2>
+      <table>
+        <thead><tr><th>Kesim türü</th><th>Ne yapar</th><th>Uç</th></tr></thead>
+        <tbody>
+          <tr><td>Çizgi üzerinden</td><td>Ucun merkezi çizginin tam üstünden geçer; gravür ve labirent gibi çizimler için.</td><td>V uç veya ince freze</td></tr>
+          <tr><td>Dıştan</td><td>Parçayı çevresinden keser; parça ölçüsü korunur. Tutucularla parça yerinde kalır.</td><td>Düz freze</td></tr>
+          <tr><td>İçten</td><td>Deliği içinden keser; delik ölçüsü korunur.</td><td>Düz freze</td></tr>
+          <tr><td>Cep</td><td>Şeklin içini düz tabanlı boşaltır. Ofset veya raster dolgu, isteğe bağlı taban deseni.</td><td>Düz freze, desen için küresel</td></tr>
+          <tr><td>V oyma</td><td>Derinlik genişliğe göre değişir; yazılarda keskin köşeler verir. Geniş yerler düz tabanlı kalır.</td><td>V uç (+ isteğe bağlı düz freze)</td></tr>
+          <tr><td>3D oyma</td><td>Model yüzeyini kaba ve son geçişle oyar.</td><td>Düz freze + küresel freze</td></tr>
+          <tr><td>İzolasyon, delik, kart kesimi</td><td>Gerber/Excellon dosyalarından PCB.</td><td>V uç, matkap, 1 mm freze</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Şekil ve metin tasarımı</h2>
+      <ol>
+        <li><strong>Ekleyin.</strong> Sol araç çubuğundan bir şekil veya metin seçin. Yeni tasarım malzemedeki boş bir yere yerleşir ve <em>Şekil ve konum</em> sekmesi açılır.</li>
+        <li><strong>Boyutlandırın.</strong> Genişlik, yükseklik ve açıyı girin; "Oranı koru" ile orantılı ölçeklenir. Dikdörtgenin köşe yarıçapını, çokgenin köşe sayısını, metnin yazı tipini ve harf yüksekliğini ayarlayın.</li>
+        <li><strong>Düzenleyin.</strong> "Gelişmiş vektör düzenleme" altında ofset kopyası, sadeleştirme, nokta düzenleme ve iki şekli birleştirme, çıkarma veya kesiştirme bulunur. Serbest çizim aracıyla elle de çizebilirsiniz.</li>
+        <li><strong>Yerleştirin.</strong> Hizalama düğmeleri, "Malzemeye ortala", sağ tık menüsü ve araç çubuğundaki "Yerleştir" ile parçaları malzemeye düzenleyin. Ctrl+Z / Ctrl+Y ile geri alıp yineleyin.</li>
+      </ol>
+      <p>Yazı tiplerinde üst üste binen harf parçaları tek dış hatta birleştirilir; böylece kesim yalnızca görünen kenarı takip eder. Uç bir harfin ince bölümüne sığmazsa program kesilmeyecek alanın yüzdesiyle uyarır.</p>
+
+      <h2>V oyma ve kakma: adım adım</h2>
+      <ol>
+        <li><strong>Şekli seçin</strong> ve Kesim sekmesinde kesim türünü <em>V oyma</em> yapın. Program uygun bir V uç atar.</li>
+        <li><strong>Derinliği girin.</strong> Bu en fazla oyma derinliğidir; bundan geniş yerlerin tabanı düz kalır. Geniş yerleri hızlı temizlemek için bir "Düz taban ucu" seçebilirsiniz.</li>
+        <li><strong>Kakma için</strong> "V kakma tıpası ekle"ye basın. Program aynalanmış bir tıpa oluşturur; "Başlangıç derinliği" tıpa ile cep arasında tutkal boşluğu bırakır.</li>
+        <li><strong>Ayrı kesin.</strong> Cebi bir malzemeye, tıpayı farklı renkte ikinci malzemeye kesin; kesmediğinizi katman listesinden gizleyin. Tıpayı yapıştırıp fazlasını zımparalayın. İlk denemeyi hurda malzemede yapın.</li>
+      </ol>
+
+      <h2>3D model oyma: adım adım</h2>
+      <ol>
+        <li><strong>Modeli ekleyin.</strong> Dosya → Dosya ekle ile STL, OBJ, 3MF veya bir fotoğraf seçin. Model tasarım alanında 3D görünür; fareyle her açıdan döndürün.</li>
+        <li><strong>Ölçüyü ve yönü ayarlayın.</strong> Model genişliğini, derinliğini ve üste bakacak yüzü seçin. Kalıp için "Ters çevir" işaretleyin.</li>
+        <li><strong>Uçları seçin.</strong> Kaba boşaltma için düz freze (ör. 3.175 mm), son geçiş için küresel freze önerilir. Daha düzgün yüzey için tarama yönünü "X + Y" yapın.</li>
+        <li><strong>Simüle edin ve kesin.</strong> 3D modunda oyulmuş yüzeyi kontrol edin. İsterseniz "dış hattından kes" ile parçayı malzemeden çıkarın.</li>
+      </ol>
+
+      <h2>Gerber'den PCB kazıma: adım adım</h2>
+      <ol>
+        <li><strong>Klasörü açın.</strong> Dosya → Gerber klasörü aç ile çıktı klasörünü gösterin. Bakır, kart kenarı ve delik katmanları otomatik tanınır; maske ve serigrafi atlanır.</li>
+        <li><strong>Malzemeyi girin.</strong> Üst şeritteki Malzeme'den bakır plaketin ölçülerini yazın, kartı plaket üzerinde yerleştirin.</li>
+        <li><strong>Uçları seçin.</strong> İzolasyon için V uç (ör. 30° · 0.2 mm), delik için 0.8 mm freze, kart kesimi için 1 mm freze önerilir. Program V ucun derinliğe göre kanal genişliğini hesaplar.</li>
+        <li><strong>Simüle edin ve kesin.</strong> İşler uca göre sıralanır: izolasyon, delik, kart kesimi. Her işten sonra makine park eder ve uç değişimine yönlendirir.</li>
+      </ol>
+
+      <h2>Yerleştirme, doldurma ve uygulamalar</h2>
+      <ul>
+        <li><strong>Yerleştir.</strong> Tüm parçaları büyükten küçüğe malzemeye dizer; sığmayanları malzemenin sağına bırakır.</li>
+        <li><strong>Malzemeyi bununla doldur.</strong> Sağ tık menüsünden seçili parçanın kopyalarıyla malzemeyi doldurur; diğer parçaların yerini atlar.</li>
+        <li><strong>Uygulamalar.</strong> Kutu yapıcı (parmak geçmeli 5 panel), dişli, labirent, petek, delik dizisi, dairesel dizi ve köpek kemiği köşe. Köpek kemiği, geçmelerin tam oturması için iç köşelere uç yarıçapında boşluk açar.</li>
+      </ul>
+
+      <h2>Kesim: makinede üç adım</h2>
+      <ol>
+        <li><strong>Bağlan.</strong> Makine sekmesinde Bağlan'a basıp GRBL kartınızın portunu seçin. Makine profilinden çalışma alanını ve iş sonu park konumunu ayarlayın.</li>
+        <li><strong>Sıfır noktasını ayarla.</strong> Ucu başlangıç noktasına sürün, XY sıfırını ve kâğıt yöntemiyle Z sıfırını ayarlayın. "Çerçeveyi gez" ile konumu kesmeden doğrulayın.</li>
+        <li><strong>Kes.</strong> İşleri sırayla başlatın. Kesimden önce kontrol listesi açılır. Kesim sırasında besleme ve devri %10 adımlarla değiştirebilirsiniz. Uç kırılır veya iş durursa "Satırdan devam" ile kaldığınız yerden sürdürün.</li>
+      </ol>
+      <p>Makinenizden uzun malzemeler için İş sıfırı panelinde <em>bölmeli kesim</em>i açın: iş Y yönünde bölgelere ayrılır, her bölgeden sonra malzemeyi belirtilen kadar kaydırırsınız.</p>
+
+      <h2>Makine bağlantısı</h2>
+      <p>Router Studio, GRBL 1.1 yüklü makinelerle çalışır: Arduino Uno + CNC Shield V3, 3018 tipi masaüstü routerlar ve benzerleri. Bağlantı tarayıcının Web Serial özelliğiyle kurulur; Chrome veya Edge kullanın. G-code'u <code>.nc</code> dosyası olarak indirip Candle veya UGS gibi başka göndericilerle de kullanabilirsiniz.</p>
+
+      <h2>Sık sorulan sorular</h2>
+      <h3>Yazı veya logo nasıl oyulur?</h3>
+      <p>Sol araç çubuğundan Metin ekleyin ya da SVG/DXF logonuzu açın. Keskin köşeler için V oyma, düz tabanlı yazı için Cep, harfi parça olarak çıkarmak için Dıştan seçin.</p>
+      <h3>Z probu olmadan kullanılabilir mi?</h3>
+      <p>Evet. Ucu kâğıt yöntemiyle yüzeye indirip "Z sıfırını burada ayarla"ya basmanız yeterli. Prob varsa otomatik Z probu ve yüzey haritası (auto-level) da kullanılabilir.</p>
+      <h3>DWG dosyası açılır mı?</h3>
+      <p>DWG kapalı bir formattır. Çizimi AutoCAD, LibreCAD veya ODA File Converter ile DXF olarak kaydedip içe aktarın.</p>
+      <h3>Dosyalarım bir sunucuya gönderiliyor mu?</h3>
+      <p>Hayır. Bütün işlem tarayıcınızda yapılır; dosyalarınız bilgisayarınızdan çıkmaz.</p>
+      <h3>Easel'den farkı nedir?</h3>
+      <p>Router Studio ücretsizdir ve kesim sınırı yoktur. V oyma, V kakma, 3D oyma, desenli cep, yerleştirme ve bölmeli kesim gibi özellikler herkese açıktır. Bunlara ek olarak Gerber ve Excellon dosyalarını doğrudan okur, PCB izolasyon frezeleme yapar ve yüzey haritası (auto-level) sunar.</p>
+
+      <p style="margin-top:40px"><a class="cta" href="./">Router Studio'yu tarayıcıda aç</a></p>
+    </article>
+  </main>
+  <footer>Router Studio — tarayıcıda çalışan CNC tasarım, CAM ve GRBL kontrol programı. · v2.0.0 · <a href="mailto:erdem.erciyas@gmail.com">erdem.erciyas@gmail.com</a></footer>
+</body>
+</html>
